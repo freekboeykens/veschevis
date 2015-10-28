@@ -1,11 +1,10 @@
-# veschevis
-
 # Requirements
  * django-datatables-view
 
 
-# Static files are downloaded from:
+# Statics
  * bootstrap: http://getbootstrap.com
  * datatables: http://datatables.net
+ * font-awesome: http://fortawesome.github.io/Font-Awesome/
 
  
