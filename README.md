@@ -9,3 +9,4 @@
  * highcharts: http://www.highcharts.com/
  * jquery: http://jquery.com/
  * jquery-validation: http://jqueryvalidation.org/
+ * momentjs: http://momentjs.com
