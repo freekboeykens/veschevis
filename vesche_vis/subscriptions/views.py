@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView
 
 class CooperantCreateView(CreateView):
     model = Cooperant
+    template_name = 'subscriptions/cooperant_form.html'
     fields = [
         'first_name',
         'last_name',
