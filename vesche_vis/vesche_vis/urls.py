@@ -17,5 +17,13 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(
+        r'^subscriptions/',
+        include('subscriptions.urls',
+        namespace = "subscriptions")
+    ),
+    url(
+        r'^admin/',
+        include(admin.site.urls)
+    ),
 ]
