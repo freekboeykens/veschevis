@@ -2,8 +2,8 @@ from django.db import models
 
 class Cooperant(models.Model):
     class Meta:
-        verbose_name: "Coöperant"
-        verbose_name_plural: "Coöperanten"
+        verbose_name = "Coöperant"
+        verbose_name_plural = "Coöperanten"
 
     first_name = models.CharField('Voornaam', max_length=100)
     last_name = models.CharField('Achternaam', max_length=100)
