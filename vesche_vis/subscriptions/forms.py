@@ -27,8 +27,8 @@ class CooperantForm(forms.ModelForm):
 
     helper.form_method = 'post'
     helper.form_class = 'form-horizontal col-xs-12 col-md-6 col-lg-5'
-    helper.label_class = 'col-xs-3 col-md-2 col-lg-2'
-    helper.field_class = 'col-xs-9 col-md-10 col-lg-10'
+    helper.label_class = 'col-xs-3 col-md-4 col-lg-4'
+    helper.field_class = 'col-xs-9 col-md-8 col-lg-8'
     #helper.add_input(Submit('submit', 'Save'))
 
 #    helper.add_input(Button(
