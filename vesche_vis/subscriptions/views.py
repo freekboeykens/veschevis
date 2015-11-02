@@ -10,9 +10,7 @@ class CooperantCreateView(CreateView):
         'last_name',
         'phone',
         'email',
-        'street',
-        'number',
-        'mailbox',
+        'street_and_number',
         'zip_code',
         'city',
     ]

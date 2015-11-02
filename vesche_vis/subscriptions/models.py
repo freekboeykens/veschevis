@@ -10,9 +10,7 @@ class Cooperant(models.Model):
     phone = models.CharField('Telefoon', max_length=100)
     email = models.EmailField('E-mail', max_length=100)
     code = models.CharField('Code', max_length=100)
-    street = models.CharField('Straat', max_length=100)
-    number = models.PositiveIntegerField('Nummer')
-    mailbox = models.CharField('Bus', max_length=5)
+    street_and_number = models.CharField('Straat + nummer', max_length=100)
     zip_code = models.PositiveIntegerField('Postcode')
     city = models.CharField('Stad', max_length=100)
 
