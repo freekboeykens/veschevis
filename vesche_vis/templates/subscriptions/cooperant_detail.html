@@ -4,8 +4,13 @@
     <h3><span class="fa fa-user"></span> {{ cooperant }} </h3>
 {% endblock %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<!--{% for subscription in cooperant.subscription_set.all %}
-    <li> {{ subscription.date }}: {{ subscription.collection_point }} </li>
-{% endfor %}-->
+{% block content %}
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    {% for subscription in cooperant.subscription_set.all %}
+        <li> {{ subscription.date }}: {{ subscription.collection_point }} </li>
+    {% endfor %}
+
+{% endblock %}
