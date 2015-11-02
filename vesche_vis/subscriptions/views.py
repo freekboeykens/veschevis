@@ -1,18 +1,10 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from .models import Cooperant
+from django.views.generic.edit import FormView
+from .forms import CooperantForm
 
-class CooperantCreateView(CreateView):
-    model = Cooperant
+class CooperantFormView(FormView):
     template_name = 'subscriptions/cooperant_form.html'
-    fields = [
-        'first_name',
-        'last_name',
-        'phone',
-        'email',
-        'street_and_number',
-        'zip_code',
-        'city',
-    ]
+    form_class = CooperantForm
+    success_url = '/thanks/'  # TODO
 
     # TODO: use stand-alone function to create unique code?

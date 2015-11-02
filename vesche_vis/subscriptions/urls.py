@@ -5,7 +5,7 @@ urlpatterns = [
     #e.g. /subscriptions/add_cooperant
     url(
         r'^add_cooperant/$',
-        views.CooperantCreateView.as_view(),
+        views.CooperantFormView.as_view(),
         name='add_cooperant',
     ),
 ]
