@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block heading %}
+    <h3><span class="fa fa-user"></span> {{ cooperant.first_name }} {{ cooperant.last_name }}</h3>
+{% endblock %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<!--{% for subscription in cooperant.subscription_set.all %}
+    <li> {{ subscription.date }}: {{ subscription.collection_point }} </li>
+{% endfor %}-->
