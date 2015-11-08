@@ -6,6 +6,6 @@
         <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
     </head>
     <body>
-        {% render_table cooperant %}
+        {% render_table cooperant.subscription_set.all %}
     </body>
 </html>
