@@ -1,11 +1,11 @@
-{% load render_table from django_tables2 %}
+{% extends 'base.html' %}
 
-<!doctype html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
-    </head>
-    <body>
-        {% render_table cooperant.subscription_set.all %}
-    </body>
-</html>
+{% load django_tables2 crispy_forms_tags %}
+
+{% block heading %}
+    <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
+{% endblock %}
+
+{% block content %}
+    {% render_table cooperant.subscription_set.all %}
+{% endblock %}
