@@ -1,5 +1,6 @@
 # Requirements
  * django-datatables-view
+ * django-tables2
 
 
 # Statics
