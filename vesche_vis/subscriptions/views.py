@@ -15,3 +15,7 @@ class CooperantCreateView(CreateView):
 class CooperantDetailView(DetailView):
     model = Cooperant
     template_name = 'subscriptions/cooperant_detail.html'
+
+class CooperantSubscriptionsView(DetailView):
+    model = Cooperant
+    template_name = 'subscriptions/cooperant_subscriptions.html'
