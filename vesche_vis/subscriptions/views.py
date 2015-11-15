@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from .models import Cooperant
 from .forms import CooperantForm
+from .tables import SubscriptionTable
 
 class CooperantCreateView(CreateView):
     model = Cooperant
@@ -19,3 +21,7 @@ class CooperantDetailView(DetailView):
 class CooperantSubscriptionsView(DetailView):
     model = Cooperant
     template_name = 'subscriptions/cooperant_subscriptions.html'
+
+#    def get(self, request):
+#        table = SubscriptionTable(cooperant.subscription_set.all())
+#        return HttpResponse(table)

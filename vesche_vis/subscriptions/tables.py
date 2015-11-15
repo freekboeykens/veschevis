@@ -1,7 +1,7 @@
 import django_tables2 as tables
-from .models import Cooperant
+from .models import WeeklySubscription
 
-class CooperantTable(tables.Table):
+class SubscriptionTable(tables.Table):
     class Meta:
-        model = Cooperant
+        model = WeeklySubscription
         attrs = { "class": "paleblue" }
