@@ -1,5 +1,8 @@
 # Requirements
  * django-datatables-view
+ * django-tables2
+ * django-filter
+ * Django-crispy-forms
 
 
 # Statics

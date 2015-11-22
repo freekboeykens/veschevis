@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     # 3rd-pary apps
     'crispy_forms',
     'compressor',
+    'django_tables2',
 
     # local apps
     'subscriptions',
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.request',
             ],
         },
     },

@@ -14,6 +14,12 @@ urlpatterns = [
         views.CooperantDetailView.as_view(),
         name='cooperant_detail',
     ),
+    # e.g. /subscriptions/cooperant/1/subscriptions/
+    url(
+        r'^cooperant/(?P<pk>[0-9]+)/subscriptions/$',
+        views.CooperantSubscriptionsView.as_view(),
+        name='cooperant_subscriptions',
+    ),
     # e.g. /subscriptions/collectionpoint/1/
     url(
         r'^collectionpoint/(?P<pk>[0-9]+)/$',
