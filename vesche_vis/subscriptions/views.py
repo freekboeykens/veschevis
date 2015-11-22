@@ -27,7 +27,7 @@ class CooperantSubscriptionsView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(CooperantSubscriptionsView, self).get_context_data(**kwargs)
         subscription_set = self.object.subscription_set.all()
-        table = SubscriptionTable(subscription_set)
+        table = CooperantTable(subscription_set)
         context['table'] = table
         return context
 
