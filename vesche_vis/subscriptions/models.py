@@ -58,16 +58,18 @@ class WeeklySubscription(models.Model):
 
     cooperant = models.ForeignKey(
         Cooperant,
-        verbose_name="Coöperant",
-        related_name="subscription_set"
+        verbose_name = "Coöperant",
+        related_name = "subscription_set"
     )
     collection_point = models.ForeignKey(
         CollectionPoint,
-        verbose_name="Afhaalpunt"
+        verbose_name = "Afhaalpunt",
+        related_name = "subscription_set"
     )
     subscription_type = models.ForeignKey(
         SubscriptionType,
-        verbose_name="Pakket"
+        verbose_name = "Pakket",
+        related_name = "subscription_set"
     )
     date = models.DateField('Afhaaldatum')
     amount = models.PositiveIntegerField('Aantal', default=1)
