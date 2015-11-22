@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
+{% load django_tables2 crispy_forms_tags %}
 
 {% block heading %}
+    <link rel="stylesheet" href="/static/django_tables2/themes/paleblue/css/screen.css" />
     <h3><span class="fa fa-user"></span> {{ collection_point }} </h3>
 {% endblock %}
 
-
 {% block content %}
-
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-    {% for subscription in collection_point.subscription_set.all %}
-        <li> {{ subscription.date }}: {{ subscription.cooperant }} </li>
-    {% endfor %}
-
+    {% render_table table %}
 {% endblock %}

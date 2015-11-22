@@ -6,6 +6,9 @@ from .models import Cooperant, CollectionPoint, WeeklySubscription
 from .forms import CooperantForm
 from .tables import SubscriptionTable
 
+# =============================================================================
+# COOPERANT CREATE VIEW
+# =============================================================================
 class CooperantCreateView(CreateView):
     model = Cooperant
     form_class = CooperantForm
@@ -14,27 +17,32 @@ class CooperantCreateView(CreateView):
 
     # TODO: use stand-alone function to create unique code?
 
+# =============================================================================
+# COOPERANT DETAIL VIEW
+# =============================================================================
 class CooperantDetailView(DetailView):
     model = Cooperant
     context_object_name = 'cooperant'
     template_name = 'subscriptions/cooperant_detail.html'
 
-class CooperantSubscriptionsView(DetailView):
-    model = Cooperant
-    context_object_name = 'cooperant'
-    template_name = 'subscriptions/cooperant_subscriptions.html'
-
     def get_context_data(self, **kwargs):
-        context = super(CooperantSubscriptionsView, self).get_context_data(**kwargs)
+        context = super(CooperantDetailView, self).get_context_data(**kwargs)
         subscription_set = self.object.subscription_set.all()
         table = CooperantTable(subscription_set)
         context['table'] = table
         return context
 
-#    def get(self, request):
-#        table = SubscriptionTable(cooperant.subscription_set.all())
-#        return HttpResponse(table)
+# =============================================================================
+# COLLECTION POINT DETAIL VIEW
+# =============================================================================
 class CollectionPointDetailView(DetailView):
     model = CollectionPoint
     context_object_name = 'collection_point'
     template_name = 'subscriptions/collection_point_detail.html'
+
+        def get_context_data(self, **kwargs):
+            context = super(CollectionPointDetailView, self).get_context_data(**kwargs)
+            subscription_set = self.object.subscription_set.all()
+            table = CollectionPointTable(subscription_set)
+            context['table'] = table
+            return context
