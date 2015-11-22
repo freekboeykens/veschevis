@@ -4,7 +4,7 @@ from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from .models import Cooperant, CollectionPoint, WeeklySubscription
 from .forms import CooperantForm
-from .tables import SubscriptionTable
+from .tables import CooperantTable, CollectionPointTable
 
 # =============================================================================
 # COOPERANT CREATE VIEW
@@ -40,9 +40,9 @@ class CollectionPointDetailView(DetailView):
     context_object_name = 'collection_point'
     template_name = 'subscriptions/collection_point_detail.html'
 
-        def get_context_data(self, **kwargs):
-            context = super(CollectionPointDetailView, self).get_context_data(**kwargs)
-            subscription_set = self.object.subscription_set.all()
-            table = CollectionPointTable(subscription_set)
-            context['table'] = table
-            return context
+    def get_context_data(self, **kwargs):
+        context = super(CollectionPointDetailView, self).get_context_data(**kwargs)
+        subscription_set = self.object.subscription_set.all()
+        table = CollectionPointTable(subscription_set)
+        context['table'] = table
+        return context

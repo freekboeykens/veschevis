@@ -24,7 +24,7 @@ class CollectionPointTable(tables.Table):
         model = WeeklySubscription
         attrs = { "class": "paleblue" }
         fields = (
-            'cooperant'
+            'cooperant',
             'subscription_type',
             'date',
             'amount',
