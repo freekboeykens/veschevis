@@ -20,7 +20,21 @@ class CooperantDetailView(DetailView):
 
 class CooperantSubscriptionsView(DetailView):
     model = Cooperant
+    context_object_name = 'cooperant'
     template_name = 'subscriptions/cooperant_subscriptions.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CooperantSubscriptionsView, self).get_context_data(**kwargs)
+        subscription_set = self.object.subscription_set.all()
+        table = SubscriptionTable(subscription_set)
+        context['table'] = table
+        return context
+
+
+
+
+
+
 
 #    def get(self, request):
 #        table = SubscriptionTable(cooperant.subscription_set.all())
