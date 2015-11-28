@@ -59,7 +59,7 @@ def test_pdf_view(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
 
-    test = CollectionPointPDF()
+    test = CollectionPointPDF(CollectionPoint.objects.first())
     pdf = test.create_pdf()
     response.write(pdf)
 

@@ -12,6 +12,9 @@ from .models import Cooperant, CollectionPoint, WeeklySubscription
 # =============================================================================
 class CollectionPointPDF:
 
+    def __init__(self, collection_point):
+        self.collection_point = collection_point
+
     def create_pdf(self):
         buffer = BytesIO()
 
@@ -20,7 +23,8 @@ class CollectionPointPDF:
 
         # Draw things on the PDF. Here's where the PDF generation happens.
         # See the ReportLab documentation for the full list of functionality.
-        p.drawString(100, 100, "Hello world.")
+
+        p.drawString(100, 100, self.collection_point.name)
 
         # Close the PDF object cleanly.
         p.showPage()
