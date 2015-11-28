@@ -7,6 +7,7 @@ from .models import Cooperant, CollectionPoint, WeeklySubscription
 from .forms import CooperantForm
 from .tables import CooperantTable, CollectionPointTable
 from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 
 # =============================================================================
 # COOPERANT CREATE VIEW
@@ -60,7 +61,7 @@ def test_pdf_view(request):
     buffer = BytesIO()
 
     # Create the PDF object, using the BytesIO object as its "file."
-    p = canvas.Canvas(buffer)
+    p = canvas.Canvas(buffer, pagesize=A4)
 
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
