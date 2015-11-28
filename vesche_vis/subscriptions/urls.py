@@ -20,4 +20,10 @@ urlpatterns = [
         views.CollectionPointDetailView.as_view(),
         name='collection_point_detail',
     ),
+    # e.g. /subscriptions/testpdf/
+    url(
+        r'^testpdf/$',
+        views.test_pdf_view,
+        name='test_pdf_view',
+    ),
 ]
