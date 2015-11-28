@@ -5,6 +5,7 @@ from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from .models import Cooperant, CollectionPoint, WeeklySubscription
 from .forms import CooperantForm
+from .pdfs import CollectionPointPDF
 from .tables import CooperantTable, CollectionPointTable
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
@@ -58,21 +59,8 @@ def test_pdf_view(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
 
-    buffer = BytesIO()
-
-    # Create the PDF object, using the BytesIO object as its "file."
-    p = canvas.Canvas(buffer, pagesize=A4)
-
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 100, "Hello world.")
-
-    # Close the PDF object cleanly.
-    p.showPage()
-    p.save()
-
-    # Get the value of the BytesIO buffer and write it to the response.
-    pdf = buffer.getvalue()
-    buffer.close()
+    test = CollectionPointPDF()
+    pdf = test.create_pdf()
     response.write(pdf)
+
     return response
