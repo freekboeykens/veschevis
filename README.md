@@ -2,8 +2,8 @@
  * django-datatables-view
  * django-tables2
  * django-filter
- * Django-crispy-forms
-
+ * django-crispy-forms
+ * reportlab
 
 # Statics
  * bootstrap: http://getbootstrap.com/

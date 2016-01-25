@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'compressor',
     'django_tables2',
+    'reportlab',
 
     # local apps
     'subscriptions',

@@ -1,10 +1,14 @@
+from io import BytesIO
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from .models import Cooperant, CollectionPoint, WeeklySubscription
 from .forms import CooperantForm
+from .pdfs import CollectionPointPDF
 from .tables import CooperantTable, CollectionPointTable
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
 
 # =============================================================================
 # COOPERANT CREATE VIEW
@@ -46,3 +50,17 @@ class CollectionPointDetailView(DetailView):
         table = CollectionPointTable(subscription_set)
         context['table'] = table
         return context
+
+# =============================================================================
+# TEST PDF: HELLO WORLD
+# =============================================================================
+def test_pdf_view(request):
+    # Create the HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+
+    test = CollectionPointPDF(CollectionPoint.objects.first())
+    pdf = test.create_pdf()
+    response.write(pdf)
+
+    return response
