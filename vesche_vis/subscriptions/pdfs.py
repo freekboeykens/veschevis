@@ -16,21 +16,21 @@ class CollectionPointPDF:
         self.collection_point = collection_point
 
     def create_pdf(self):
+        """
+        Creates the PDF for a collection point.
+        """
+
         buffer = BytesIO()
 
-        # Create the PDF object, using the BytesIO object as its "file."
+        # Create the PDF object, using the BytesIO object as its "file"
         p = canvas.Canvas(buffer, pagesize = A4)
-        width, self.height = A4
-        styles = getSampleStyleSheet()
+        self.width, self.height = A4
+        self.styles = getSampleStyleSheet()
 
-        # WRite collection point name
-        collectionpoint = """ <font size="9">
-        Afhaalpunt: %s<br/>
-        </font>
-        """ % (self.collection_point.name)
-        par = Paragraph(collectionpoint, styles["Normal"])
-        par.wrapOn(p, width, self.height)
-        par.drawOn(p, *self.coord(18, 40, mm))
+        # Write collection point name
+        info = self.__collection_point_info()
+        info.wrapOn(p, self.width, self.height)
+        info.drawOn(p, *self.__coord(18, 40, mm))
 
         # write data
         data = []
@@ -47,8 +47,8 @@ class CollectionPointPDF:
             ('INNERGRID', (0,0), (-1,-1), 0.25, colors.black),
             ('BOX', (0,0), (-1,-1), 0.25, colors.black)
         ]))
-        t.wrapOn(p, width, self.height)
-        t.drawOn(p, *self.coord(18, 85, mm))
+        t.wrapOn(p, self.width, self.height)
+        t.drawOn(p, *self.__coord(18, 85, mm))
 
         # Close the PDF object cleanly.
         p.showPage()
@@ -60,10 +60,26 @@ class CollectionPointPDF:
 
         return pdf
 
-    def coord(self, x, y, unit=1):
+    def __collection_point_info(self):
         """
-        # http://stackoverflow.com/questions/4726011/wrap-text-in-a-table-reportlab
-        Helper class to help position flowables in Canvas objects
+        Writes collection point info to the PDF.
+        """
+
+        info = """
+        <font size="9">
+        Afhaalpunt: %s
+        <br/> </font>
+        """ % (self.collection_point.name)
+        par = Paragraph(info, self.styles["Normal"])
+
+        return par
+
+
+
+    def __coord(self, x, y, unit=1):
+        """
+        Helps positioning flowables in Canvas objects.
+        http://stackoverflow.com/questions/4726011/wrap-text-in-a-table-reportlab
         """
         x, y = x * unit, self.height -  y * unit
         return x, y
